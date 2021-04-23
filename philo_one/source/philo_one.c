@@ -16,7 +16,7 @@ void	*function(void *arg)
 	t_all	*all;
 
 	all = *(t_all **)arg;
-	printf("%d\n", all->philosopher.id);
+	printf("%ld\tPhilosoppher %d is created\n", get_current_time(all), all->philosopher.id);
 	return (NULL);
 }
 
@@ -26,14 +26,14 @@ void	start_threads(t_all *all)
 
 	i = 0;
 	printf("Before Thread\n");
-	while (i < 3)
+	while (i < 7)
 	{
 		all->philosopher.id = i;
-		eat(all);
 		pthread_create(&all->philosopher.thread_id, NULL, function, &all);
-		pthread_join(all->philosopher.thread_id, NULL);
+		// pthread_join(all->philosopher.thread_id, NULL);
 		i++;
 	}
+	pthread_join(all->philosopher.thread_id, NULL);
 	printf("After Thread\n");
 }
 

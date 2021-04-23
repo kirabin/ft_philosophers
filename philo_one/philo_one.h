@@ -39,7 +39,7 @@ t_input		*parce_input(long argc, char **argv);
 void		print_input(t_input *input);
 
 long		get_start_time();
-void		print_current_time(t_all *all);
+long		get_current_time(t_all *all);
 
 void		eat(t_all *all);
 
