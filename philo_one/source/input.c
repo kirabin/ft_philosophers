@@ -34,9 +34,9 @@ void	print_input(t_input *input)
 	if (input)
 	{
 		printf("%d\n", input->philosophers_len);
-		printf("%d\n", input->time_to_die);
-		printf("%d\n", input->time_to_eat);
-		printf("%d\n", input->time_to_sleep);
+		printf("%ld\n", input->time_to_die);
+		printf("%ld\n", input->time_to_eat);
+		printf("%ld\n", input->time_to_sleep);
 		printf("%d\n", input->max_meals);
 	}
 }

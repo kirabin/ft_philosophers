@@ -41,7 +41,8 @@ void		print_input(t_input *input);
 long		get_start_time();
 long		get_current_time(t_all *all);
 
-void		eat(t_all *all);
+void		eat_thread(t_all *all, t_philosopher philosopher);
+void		sleep_thread(t_all *all, t_philosopher philosopher);
 
 long		ft_atoi(char *str);
 

@@ -10,13 +10,20 @@
 //			pthread_join(), waits for thread or doesn't if it was terminated.
 //			pthread_exit(thread)	terminates thread or all threads if NULL.
 
+// LEARN:	What is mutex?
+
 
 void	*function(void *arg)
 {
-	t_all	*all;
+	t_all			*all;
+	t_philosopher	philosopher;
 
-	all = *(t_all **)arg;
-	printf("%ld\tPhilosoppher %d is created\n", get_current_time(all), all->philosopher.id);
+	all = (t_all *)arg;
+	philosopher.id = all->philosopher.id;
+	philosopher.thread_id = all->philosopher.thread_id;
+	printf("%ld\tPhilosoppher %d is created\n", get_current_time(all), philosopher.id);
+	eat_thread(all, philosopher);
+	sleep_thread(all, philosopher);
 	return (NULL);
 }
 
@@ -26,10 +33,10 @@ void	start_threads(t_all *all)
 
 	i = 0;
 	printf("Before Thread\n");
-	while (i < 7)
+	while (i < 3)
 	{
 		all->philosopher.id = i;
-		pthread_create(&all->philosopher.thread_id, NULL, function, &all);
+		pthread_create(&all->philosopher.thread_id, NULL, function, all);
 		// pthread_join(all->philosopher.thread_id, NULL);
 		i++;
 	}

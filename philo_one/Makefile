@@ -1,11 +1,10 @@
 NAME = philo_one
 FLAGS = -Wall -Wextra -g
 
-FILES =	input \
+FILES =	all input \
 		lib \
 		philo_one \
-		all \
-		eat \
+		eat sleep \
 		time
 
 SRC = $(patsubst %, source/%.c, $(FILES))
