@@ -1,4 +1,4 @@
-#include "philo_one.h"
+#include "philo.h"
 
 long	ft_atoi(char *str)
 {

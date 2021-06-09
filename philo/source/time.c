@@ -1,4 +1,4 @@
-#include "philo_one.h"
+#include "philo.h"
 
 long	get_start_time()
 {

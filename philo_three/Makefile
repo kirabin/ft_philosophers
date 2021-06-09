@@ -1,1 +1,0 @@
-NAME = philo_three

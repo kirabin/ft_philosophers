@@ -1,5 +1,5 @@
-#ifndef PHILO_ONE_H
-# define PHILO_ONE_H
+#ifndef PHILO_H
+# define PHILO_H
 # include <stdbool.h>
 # include <sys/time.h>
 # include <stdlib.h>
@@ -18,24 +18,36 @@ typedef struct s_input
 	int			max_meals;
 }	t_input;
 
+typedef struct s_all	t_all;
+
 typedef struct s_philosopher
 {
-	pthread_t	thread_id;
-	int			id;
+	int				id;
+	pthread_mutex_t	*highest_fork;
+	pthread_mutex_t	*lowest_fork;
+	pthread_mutex_t	*right_to_write;
+	time_t			die_time;
+	int				eat_count;
+	pthread_mutex_t	right_to_eat;
+	t_all			*all;
 }	t_philosopher;
 
 typedef struct s_all
 {
 	long			start_time;
-	t_philosopher	philosopher;
-	t_input			*input;
+	int				current_number;
+	pthread_mutex_t	*forks;
+	pthread_mutex_t	right_to_write;
+	t_philosopher	*philosophers;
+	t_input			input;
+
 }	t_all;
 
-t_all		*init_all(long arg_len, char **args);
+void		init_all(t_all *all, long arg_len, char **args);
 void		free_all(t_all *all);
 
 void		free_input(t_input *input);
-t_input		*parce_input(long argc, char **argv);
+void		parce_input(t_input *input, long argc, char **argv);
 void		print_input(t_input *input);
 
 long		get_start_time();

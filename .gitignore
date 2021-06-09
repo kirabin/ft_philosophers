@@ -1,6 +1,4 @@
-**/*.DS_Store
-**/*.vscode
-Subject.pdf
+philo/philo
 # Prerequisites
 *.d
 
