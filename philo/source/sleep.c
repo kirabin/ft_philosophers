@@ -1,7 +1,10 @@
 #include "philo.h"
 
-void	sleep_thread(t_all *all, t_philosopher philosopher)
+void	_sleep(t_philosopher *philo)
 {
-	printf("%ld\tPhilosoppher %d is sleeping\n", get_current_time(all), philosopher.id);
-	usleep(all->input.time_to_sleep * 1000);
+	pthread_mutex_lock(&philo->all->right_to_write);
+	printf("%ld\tPhilosopher %d is sleeping\n", get_current_time(philo->all->start_time), philo->id);
+	pthread_mutex_unlock(&philo->all->right_to_write);
+	_usleep(philo->all->input.time_to_sleep, philo->all->start_time);
+	(void)philo;
 }

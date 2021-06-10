@@ -43,19 +43,23 @@ typedef struct s_all
 
 }	t_all;
 
-void		init_all(t_all *all, long arg_len, char **args);
-void		free_all(t_all *all);
+void	init_all(t_all *all, long arg_len, char **args);
+void	free_all(t_all *all);
 
-void		free_input(t_input *input);
-void		parce_input(t_input *input, long argc, char **argv);
-void		print_input(t_input *input);
+void	free_input(t_input *input);
+void	parce_input(t_input *input, long argc, char **argv);
+void	print_input(t_input *input);
 
-long		get_start_time();
-long		get_current_time(t_all *all);
+long	get_start_time();
+long	get_current_time(long start_time);
 
-void		eat_thread(t_all *all, t_philosopher philosopher);
-void		sleep_thread(t_all *all, t_philosopher philosopher);
 
-long		ft_atoi(char *str);
+long	ft_atoi(char *str);
+
+void	take_forks(t_philosopher *philo);
+void	eat(t_philosopher* philo);
+void	_sleep(t_philosopher *philo);
+void	_usleep(int milliseconds, int start_time);
+void	think(t_philosopher* philo);
 
 #endif

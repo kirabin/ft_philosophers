@@ -6,7 +6,7 @@ FILES =	all input lib philo eat sleep time
 SRC = $(patsubst %, source/%.c, $(FILES))
 OBJ = $(SRC:.c=.o)
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re valg
 
 all: $(NAME)
 
@@ -16,7 +16,7 @@ all: $(NAME)
 $(NAME):  $(OBJ)
 	gcc -o $(NAME) $(OBJ)
 
-clean: 
+clean:
 	rm -f $(OBJ)
 
 fclean: clean
@@ -30,4 +30,7 @@ test_input:
 	./$(NAME) 1 2 3 4
 
 test:
-	./$(NAME) 5 800 200 200 7
+	./$(NAME) 5 800 200 200
+
+valg:
+	valgrind --leak-check=full --log-file=vallog.log ./$(NAME) 5 800 200 200 5

@@ -2,11 +2,21 @@
 
 void	free_all(t_all *all)
 {
+	int i;
+
+	i = 0;
 	if (all)
 	{
+		while (i < all->input.philosophers_len)
+		{
+			pthread_mutex_destroy(&all->forks[i]);
+			pthread_mutex_destroy(&all->philosophers[i].right_to_eat);
+			i++;
+		}
 		free(all->forks);
 		free(all->philosophers);
 	}
+	pthread_mutex_destroy(&all->right_to_write);
 }
 
 t_philosopher*		init_philosophers(int n, pthread_mutex_t* forks, t_all *all) {
