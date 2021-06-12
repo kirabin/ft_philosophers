@@ -5,9 +5,8 @@ bool	should_philo_die(t_all *all, int i)
 	if (all->philosophers[i].die_time < get_current_time(all->start_time))
 	{
 		pthread_mutex_lock(&all->right_to_write);
-		printf("%ld\tPhilosopher %d is dead, die time %ld\n",
-			get_current_time(all->start_time),
-			i + 1, all->philosophers[i].die_time);
+		printf("%ld\tPhilosopher %d is dead\n",
+			get_current_time(all->start_time), i + 1);
 		return (true);
 	}
 	return (false);
@@ -36,7 +35,6 @@ void	*observe(void *arg)
 		if (full_philosophers == all->input.philosophers_len)
 		{
 			pthread_mutex_lock(&all->right_to_write);
-			printf("\t\tPhilosophers are full\n");
 			return (0);
 		}
 	}
