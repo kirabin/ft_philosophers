@@ -11,6 +11,7 @@
 
 typedef struct s_input
 {
+	bool		is_valid_input;
 	int			philosophers_len;
 	long		time_to_die;
 	long		time_to_eat;
@@ -50,16 +51,15 @@ void	free_input(t_input *input);
 void	parce_input(t_input *input, long argc, char **argv);
 void	print_input(t_input *input);
 
-long	get_start_time();
+long	get_start_time(void);
 long	get_current_time(long start_time);
-
 
 long	ft_atoi(char *str);
 
 void	take_forks(t_philosopher *philo);
-void	eat(t_philosopher* philo);
+void	eat(t_philosopher *philo);
 void	_sleep(t_philosopher *philo);
 void	_usleep(int milliseconds, int start_time);
-void	think(t_philosopher* philo);
+void	think(t_philosopher *philo);
 
 #endif
